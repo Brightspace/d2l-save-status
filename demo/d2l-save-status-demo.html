@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+	<title>d2l-save-status demo</title>
+
+	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+
+	<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+	<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+	<link rel="import" href="../../d2l-typography/d2l-typography.html">
+	<link rel="import" href="../d2l-save-status.html">
+
+	<style is="custom-style" include="demo-pages-shared-styles"></style>
+	<custom-style include="d2l-typography">
+		<style is="custom-style" include="d2l-typography">
+			html {
+				font-size: 20px;
+			}
+
+			#save-status {
+				display: inline-block;
+			}
+		</style>
+	</custom-style>
+</head>
+
+<body class="d2l-typography">
+	<div class="vertical-section-container">
+
+		<h1>d2l-save-status demo</h1>
+		<demo-snippet>
+			Status:
+			<d2l-save-status id="save-status"></d2l-save-status>
+			<div>
+				<button id="save-btn">Save (10s)</button>
+				<button id="save-short-btn">Save (0.1s)</button>
+				<button id="save-error-btn">Save And Error</button>
+			</div>
+		</demo-snippet>
+	</div>
+
+	<script>
+		document.querySelector('#save-btn').addEventListener('click', function (e) {
+			document.querySelector('#save-status').start();
+			console.log('long response pressed: '+ new Date());
+			setTimeout(function () {
+				document.querySelector('#save-status').end();
+				console.log('save long responed: ' + new Date());
+			}, 10000);
+		});
+		document.querySelector('#save-short-btn').addEventListener('click', function (e) {
+			document.querySelector('#save-status').start();
+			console.log('short response pressed: '+ new Date());
+
+			setTimeout(function () {
+				document.querySelector('#save-status').end();
+				console.log('save short responed: ' + new Date());
+			}, 100);
+		});
+		document.querySelector('#save-error-btn').addEventListener('click', function (e) {
+			document.querySelector('#save-status').start();
+			console.log('save and error response pressed: '+ new Date());
+
+			setTimeout(function () {
+				document.querySelector('#save-status').error();
+				console.log('save error responed: ' + new Date());
+			}, 100);
+		});
+	</script>
+</body>
+
+</html>

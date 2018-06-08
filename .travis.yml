@@ -1,0 +1,27 @@
+language: node_js
+node_js: 8
+dist: trusty
+sudo: required
+before_script:
+- npm run test:lint
+script:
+- set -e
+- polymer test --skip-plugin sauce
+- 'if [ "$TRAVIS_BRANCH" == "master" ]; then polymer test --skip-plugin local; fi'
+- git config --global url.ssh://git@github.com/.insteadOf https://no_token@github.com/
+- 'if [ "$TRAVIS_BRANCH" == "master" ]; then frauci-update-version; fi'
+env:
+  global:
+  - REPO_NAME=d2l-save-status
+  - SAUCE_USERNAME=Desire2Learn
+  - GITHUB_RELEASE_TOKEN=no_token # using custom github deploy keys in Travis with write access
+  #SAUCE_ACCESS_KEY
+  - secure: "EGqyIMeX4nYVNctSxtLzR5iM4+WkPLzqoK3MjLmMsXGsBkXn9E7SIrD9hCH6VuExx9JYgcHzurXRQs64J9c/H2G/IFd9xwoIfLBrzm2TFx4q95b4hsuZzW0qBSMoUe2xkpGO0cxy1lN2AV1rXXpHXqzurdjYPJvaSDG2y0Ij8GcxNcpNmgs3NE3YK8ZK0or09A5HJNc89BbWITQnuOyL17XnmOJpIP7Rkb1DsE/0/axb+L66HyMKzsd06V7fi8uCalkPcksPNLdyElLUXL/em+SNOUijPzyNFjCdoKnVC1VPGOQ3wJnTtuv2l0Rfeyi3bT+ILh/EUyDa+S2uyCnBxVy08iio9YkOZNsJ/FRa+NGUA65ksK7P9BnYyqQ5oNcZjG2SBNPgDzOlfuBX7XP3DDr17PZXVcRrchJNLXfoOmcegrO2A9x24NH+qqLF6kzQ/p0OpEYz0s9dUMQiMeuHlNL3yTjRON2hVV/qlmffoAbtuYsl0P9NsSXPTNJgustVQheO5FUSf7gVArtzncyaDhhojSrEgFiBrz68uGuHHmmmpS4MvvGkSXzLs1QBOKcAc5ljTIBltjigYLbZrBRfVuwaHZOePvUuuqpNa5cmrhfrus6XUoZ7AKDegENURNGM1423xCE992a+SAynKompdA8I0ogCyy+SAe9wvpXafto="  #- secure: RsXBtLXZAa7FVshCZUPfvUrl2LanQcGvmT3OvF4oT+heV3ntEtXtqYs+8MWwxVbJQOwbftkurXEYRExSimSpE1Mpd9vumuFZxv+IGE81rq+4OPR7irBXm9TIU3hjVMox/TpQ6ISJm3PRI3KCbQQPSklt3+t1zsAk2z7eSgh4XEomZiBmft3SJ7mj/AUyNjftMFVPxzNqadnesOh3dJNNlCywfrLl1+OBgbfbQHvuREcQrgrUyosdcksUQhtVDGGiBX43RDw7LnCGoVd7E1wnkn/iqcw8iwYKueZqORol0iH+UGizStRa0oB1PGfe54xwVoTKOll5xEDuPSmi0SsGeeRVBph5stegWqgbDwSFE++LcQad16fMdBNVpgEsl4lC9/l4KtVXpy10hOvEm/jOXhxrotoaf4zmCbvEqnNSWPIokgwBbwrvO3mpUAcXJZA0tu84QN7mZobBiecLiQ1kcEB+YOarNJlWklg5TatP15t6gXVwEedT/d6LUuqa/h3FI8JRix8wwrEuxNE1oJ8KOs136jj1kXQ77jVHFgcmrY+OxdUpWdQtpyR9N6CEgxwh4KXAL6rJuN2NZSWTC9Hq8ObHgCbOVbhmoP0O4tjrVML52dyGqKDzBTc7NOP4XoA6iagMxZswFwSSZHPImdZnyzCCzonMqLNVMZoZiXuZsOs=
+addons:
+  firefox: latest
+  chrome: stable
+  apt:
+    packages:
+    - gdebi
+    - oracle-java9-installer
+    - oracle-java9-set-default

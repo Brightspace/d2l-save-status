@@ -12,7 +12,7 @@
     "status",
     "statuses"
   ],
-  "homepage": "https://github.com/BrightspaceUI/save-status",
+  "homepage": "https://github.com/Brightspace/save-status",
   "private": true,
   "ignore": [
     ".editorconfig",

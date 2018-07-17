@@ -8,16 +8,14 @@ script:
 - set -e
 - polymer test --skip-plugin sauce
 - 'if [ "$TRAVIS_BRANCH" == "master" ]; then polymer test --skip-plugin local; fi'
-- git config --global url.ssh://git@github.com/.insteadOf https://no_token@github.com/
 - 'if [ "$TRAVIS_BRANCH" == "master" ]; then frauci-update-version; fi'
 env:
   global:
   - REPO_NAME=d2l-save-status
-  - SAUCE_USERNAME=Desire2Learn
-  - GITHUB_RELEASE_TOKEN=no_token # using custom github deploy keys in Travis with write access
-  - SAUCE_USERNAME=Federation
-  #SAUCE_ACCESS_KEY
-  - secure: "HpOPW73SVfnBmyzuC+dxYBeyL9j1GzRKfPHJDgNghkD+ON16vJKmA52P0m7hTqV5wxU2R2TNUNd7mLUtPLhxKfj+aYXG8sM9C90TBBqi7jXG0QUXga59qX+v7j+tXulwMkxoI9nqKnD1nsaCDlPkFNS29Vp9rsuzUExz4pC3uUG37iotQ+0Abt9HEQbXobjP20U+5XJ/ObnM4qmWGBGtgCTJI8A6FfMAKcNnMdx53w03ywsm8ycMmDC2z8YXUJVSVJ4vFOVC6Y80nQcZApeduT7BnGclL6B6AYTfcJSe4bkbhCUi3pM6IcWNzvHK0cPrnFw9eg8y2z5pMFFA6ZLBCtTIVLdzC5aizt4Idd0SPQGJdrlzqEbLZLHKLSEN7eHSFOPk/ZIZ4Gi21GlYN05Aj1c3rpxEr47T9ENKB2xU75+RpesVgmB6TERwjK+glOng4bCnrR+6FfrGlVy1vGQlTzuAnmP35FWJPDWPzBe3b9WrN8sdNV+vLVKyNns02+9+EB//9jQY1471TLm0nN7Pl/lVQXXovi2S1pD4q6NrKxIrWb8rKnG8nDKcK8Ij2vzMzZBA8ALJMF4S96tJCiF6F0m16yhZeBUy+Rs3TDgcpp4MuPV9mFkbdJKDwK2pw9nXg2SFfIxRc8qtqvrE0MaYBH6bKu07SCQyVruP82xzXQI="
+  # GITHUB_RELEASE_TOKEN in CI Setting
+  # SAUCE_USERNAME in CI Settting
+  # SAUCE_ACCESS_KEY in CI Setting
+
 addons:
   firefox: latest
   chrome: stable

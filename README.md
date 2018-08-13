@@ -25,6 +25,9 @@ this.$['save-status'].start();
 // Show Saved
 this.$['save-status'].end();
 
+// Force immediate end with no time delay
+this.$['save-status'].forceEnd();
+
 // Hide Saving when there is an error when saving
 this.$['save-status'].error();
 

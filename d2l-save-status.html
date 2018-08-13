@@ -134,6 +134,14 @@ component to display saving statuses
 				},
 
 				/**
+			 	 * Save Ends regardless of delay or # of calls
+			 	*/
+				forceEnd: function() {
+					this._saving = 0;
+					this._toggleSaved();
+				},
+
+				/**
 			 	 * Save Error
 			 	*/
 				error: function() {

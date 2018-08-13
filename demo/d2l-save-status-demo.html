@@ -39,6 +39,7 @@
 			<div>
 				<button id="save-btn">Save (10s)</button>
 				<button id="save-short-btn">Save (0.1s)</button>
+				<button title="click to end saving immediately" id="save-force-end">Force End</button>
 				<button id="save-error-btn">Save And Error</button>
 			</div>
 		</demo-snippet>
@@ -61,6 +62,10 @@
 				document.querySelector('#save-status').end();
 				console.log('save short responed: ' + new Date());
 			}, 100);
+		});
+		document.querySelector('#save-force-end').addEventListener('click', function (e) {
+			document.querySelector('#save-status').forceEnd();
+			console.log('force end pressed: '+ new Date());
 		});
 		document.querySelector('#save-error-btn').addEventListener('click', function (e) {
 			document.querySelector('#save-status').start();

@@ -26,6 +26,7 @@
     "demo"
   ],
   "dependencies": {
+    "d2l-colors": "^3.1.2",
     "d2l-icons": "^5.0.0",
     "d2l-localize-behavior": "^1.1.0",
     "d2l-typography": "^6.1.2",

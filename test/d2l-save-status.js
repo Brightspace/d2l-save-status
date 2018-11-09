@@ -18,4 +18,15 @@ suite('<d2l-save-status>', function() {
 			expect(element.is).to.equal('d2l-save-status');
 		});
 	});
+
+	suite ('Ally Test', function() {
+		suiteSetup( function() {
+			if (!isAttestInstalled()) {
+				this.skip();
+			}
+		});
+		test('d2l-save-status a11y checks', function() {
+			return ally_tests();
+		});
+	});
 });

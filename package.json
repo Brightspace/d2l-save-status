@@ -1,6 +1,6 @@
 {
   "name": "d2l-save-status",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Polymer Web-Component to display saving statuses",
   "private": true,
   "directories": {
@@ -37,5 +37,8 @@
     "frau-ci": "^1.33.2",
     "polymer-cli": "^1.6.0",
     "web-component-tester-istanbul": "^0.10.0"
+  },
+  "dependencies": {
+    "attest": "^2.5.0"
   }
 }

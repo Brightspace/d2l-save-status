@@ -1,0 +1,15 @@
+import './_ar.js';
+import './_de.js';
+import './_da.js';
+import './_en.js';
+import './_es.js';
+import './_fi.js';
+import './_fr.js';
+import './_ja.js';
+import './_ko.js';
+import './_nl.js';
+import './_pt.js';
+import './_sv.js';
+import './_tr.js';
+import './_zh-tw.js';
+import './_zh.js';

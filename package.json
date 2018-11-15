@@ -57,7 +57,6 @@
   "main": "d2l-save-status.js",
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
-    "attest": "^2.5.0",
     "d2l-colors": "BrightspaceUI/colors#semver:^4.0.0",
     "d2l-icons": "BrightspaceUI/icons#semver:^6.0.0",
     "d2l-localize-behavior": "BrightspaceUI/localize-behavior#semver:^2.0.0",

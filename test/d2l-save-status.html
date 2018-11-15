@@ -4,13 +4,13 @@
 	<title>d2l-save-status test</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-	<script src="../../web-component-tester/browser.js"></script>
+	<script src="../../@babel/polyfill/browser.js"></script>
+	<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+	<script src="../../wct-browser-legacy/browser.js"></script>
 
 	<script src="../node_modules/attest/attest.js"></script>
 	<script src="./ally-test-script.js"></script>
-
-	<link rel="import" href="../d2l-save-status.html">
+	<script type="module" src="../d2l-save-status.js"></script>
 </head>
 
 <body>
@@ -19,10 +19,14 @@
 			<d2l-save-status></d2l-save-status>
 		</template>
 	</test-fixture>
-	<script src="d2l-save-status.js"></script>
+	<script src="./d2l-save-status.js"></script>
 
-	<script>
-		a11ySuite('basic');
+	<script type="module">
+		import '../d2l-save-status.js';
+		import 'axe-core/axe.min.js';
+      	import {axeReport} from 'pwa-helpers/axe-report.js';
+
+		axeReport(fixture('basic'));
 	</script>
 </body>
 

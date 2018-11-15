@@ -1,0 +1,5 @@
+test/acceptance/*
+reports
+coverage
+test/*
+demo/*

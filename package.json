@@ -12,7 +12,7 @@
   },
   "homepage": "https://github.com/Brightspace/save-status",
   "name": "d2l-save-status",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "directories": {
     "test": "test"
   },

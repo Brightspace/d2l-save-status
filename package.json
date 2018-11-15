@@ -12,7 +12,7 @@
   },
   "homepage": "https://github.com/Brightspace/save-status",
   "name": "d2l-save-status",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "directories": {
     "test": "test"
   },
@@ -56,10 +56,11 @@
   },
   "main": "d2l-save-status.js",
   "dependencies": {
+    "@polymer/polymer": "^3.0.0",
+    "attest": "^2.5.0",
     "d2l-colors": "BrightspaceUI/colors#semver:^4.0.0",
     "d2l-icons": "BrightspaceUI/icons#semver:^6.0.0",
     "d2l-localize-behavior": "BrightspaceUI/localize-behavior#semver:^2.0.0",
-    "d2l-typography": "BrightspaceUI/typography#semver:^7.0.0",
-    "@polymer/polymer": "^3.0.0"
+    "d2l-typography": "BrightspaceUI/typography#semver:^7.0.0"
   }
 }

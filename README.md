@@ -1,5 +1,5 @@
 # d2l-save-status
-[![Build Status](https://travis-ci.org/Brightspace/d2l-save-status.svg?token=cNf4RnTRMPZgjQcxprVb)](https://travis-ci.com/Brightspace/d2l-save-status)
+[![Build Status](https://travis-ci.org/Brightspace/d2l-save-status.svg?branch=master)](https://travis-ci.org/Brightspace/d2l-save-status)
 
 Polymer based web-component to display save status
 

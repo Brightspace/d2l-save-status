@@ -1,4 +1,4 @@
-import 'd2l-localize-behavior';
+import '../d2l-localize-behavior/d2l-localize-behavior.js';
 import './_namespace.js';
 import './lang/all.js';
 /**

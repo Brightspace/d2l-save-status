@@ -1,10 +1,10 @@
-
-import 'd2l-typography/d2l-typography-shared-styles.js';
-import 'd2l-icons/d2l-icon.js';
-import 'd2l-icons/tier1-icons.js';
-import 'd2l-colors/d2l-colors.js';
+import '../@polymer/polymer/polymer-legacy.js';
+import '../d2l-typography/d2l-typography-shared-styles.js';
+import '../d2l-icons/d2l-icon.js';
+import '../d2l-icons/tier1-icons.js';
+import '../d2l-colors/d2l-colors.js';
 import './localize-behavior.js';
-import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import { Polymer } from '../@polymer/polymer/lib/legacy/polymer-fn.js';
 const $_documentContainer = document.createElement('template');
 
 $_documentContainer.innerHTML = `<dom-module id="d2l-save-status">

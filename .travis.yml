@@ -1,17 +1,13 @@
 language: node_js
-node_js: 8
-dist: trusty
-sudo: required
+node_js: node
 before_install:
 - curl -u${ARTIFACTORY_USER}:${ARTIFACTORY_PASS} https://d2lartifacts.artifactoryonline.com/d2lartifacts/api/npm/attest/auth/attest > .npmrc
 - npm i attest --registry=https://d2lartifacts.artifactoryonline.com/d2lartifacts/api/npm/attest/
 - npm i
-before_script:
-- npm run test:lint
 script:
 - set -e
-- npm run test:wct
-- 'if [ "$TRAVIS_BRANCH" == "master" ]; then polymer test --skip-plugin local; fi'
+- npm run lint
+- 'if [ "$TRAVIS_BRANCH" == "master" ]; then npm run test:polymer:sauce; fi'
 - 'if [ "$TRAVIS_BRANCH" == "master" ]; then git reset --hard; frauci-update-version; fi'
 env:
   global:

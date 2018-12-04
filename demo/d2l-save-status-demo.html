@@ -46,34 +46,34 @@
 	</div>
 
 	<script>
-		document.querySelector('#save-btn').addEventListener('click', function (e) {
+		document.querySelector('#save-btn').addEventListener('click', function() {
 			document.querySelector('#save-status').start();
-			console.log('long response pressed: '+ new Date());
-			setTimeout(function () {
+			console.log('long response pressed: ' + new Date()); // eslint-disable-line no-console
+			setTimeout(function() {
 				document.querySelector('#save-status').end();
-				console.log('save long responed: ' + new Date());
+				console.log('save long responed: ' + new Date()); // eslint-disable-line no-console
 			}, 10000);
 		});
-		document.querySelector('#save-short-btn').addEventListener('click', function (e) {
+		document.querySelector('#save-short-btn').addEventListener('click', function() {
 			document.querySelector('#save-status').start();
-			console.log('short response pressed: '+ new Date());
+			console.log('short response pressed: ' + new Date()); // eslint-disable-line no-console
 
-			setTimeout(function () {
+			setTimeout(function() {
 				document.querySelector('#save-status').end();
-				console.log('save short responed: ' + new Date());
+				console.log('save short responed: ' + new Date()); // eslint-disable-line no-console
 			}, 100);
 		});
-		document.querySelector('#save-force-end').addEventListener('click', function (e) {
+		document.querySelector('#save-force-end').addEventListener('click', function() {
 			document.querySelector('#save-status').forceEnd();
-			console.log('force end pressed: '+ new Date());
+			console.log('force end pressed: ' + new Date()); // eslint-disable-line no-console
 		});
-		document.querySelector('#save-error-btn').addEventListener('click', function (e) {
+		document.querySelector('#save-error-btn').addEventListener('click', function() {
 			document.querySelector('#save-status').start();
-			console.log('save and error response pressed: '+ new Date());
+			console.log('save and error response pressed: ' + new Date()); // eslint-disable-line no-console
 
-			setTimeout(function () {
+			setTimeout(function() {
 				document.querySelector('#save-status').error();
-				console.log('save error responed: ' + new Date());
+				console.log('save error responed: ' + new Date()); // eslint-disable-line no-console
 			}, 100);
 		});
 	</script>

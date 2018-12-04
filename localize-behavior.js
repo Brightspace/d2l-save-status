@@ -1,10 +1,10 @@
-import '../d2l-localize-behavior/d2l-localize-behavior.js';
+import 'd2l-localize-behavior/d2l-localize-behavior.js';
 import './_namespace.js';
 import './lang/all.js';
 /**
-	 * Localizes the more-less component.
-	 * @polymerBehavior D2L.PolymerBehaviors.SaveStatus.LocalizeBehavior
-	 */
+ * Localizes the d2l-save-status component.
+ * @polymerBehavior D2L.PolymerBehaviors.SaveStatus.LocalizeBehavior
+ */
 D2L.PolymerBehaviors.SaveStatus.LocalizeBehaviorImpl = {
 	properties: {
 		/**
@@ -18,7 +18,7 @@ D2L.PolymerBehaviors.SaveStatus.LocalizeBehaviorImpl = {
 	}
 };
 
-/** @polymerBehavior D2L.PolymerBehaviors.MoreLess.LocalizeBehavior */
+/** @polymerBehavior D2L.PolymerBehaviors.SaveStatus.LocalizeBehavior */
 D2L.PolymerBehaviors.SaveStatus.LocalizeBehavior = [
 	D2L.PolymerBehaviors.LocalizeBehavior,
 	D2L.PolymerBehaviors.SaveStatus.LocalizeBehaviorImpl

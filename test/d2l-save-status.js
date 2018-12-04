@@ -20,8 +20,9 @@ suite('<d2l-save-status>', function() {
 	});
 
 	suite ('Ally Test', function() {
-		suiteSetup( function() {
+		suiteSetup(function() {
 			if (!isAttestInstalled()) {
+				// eslint-disable-next-line no-invalid-this
 				this.skip();
 			}
 		});

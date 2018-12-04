@@ -1,3 +1,8 @@
 {
-  "extends": "brightspace/wct-config"
+  "extends": "brightspace/wct-config",
+  "globals": {
+    "attest": true,
+    "isAttestInstalled": true,
+    "ally_tests": true
+  }
 }

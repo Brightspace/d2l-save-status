@@ -12,7 +12,7 @@ script:
 - set -e
 - npm run test:wct
 - 'if [ "$TRAVIS_BRANCH" == "master" ]; then polymer test --skip-plugin local; fi'
-- 'if [ "$TRAVIS_BRANCH" == "master" ]; then frauci-update-version; fi'
+- 'if [ "$TRAVIS_BRANCH" == "master" ]; then git reset --hard; frauci-update-version; fi'
 env:
   global:
   - REPO_NAME=d2l-save-status

@@ -8,14 +8,12 @@
   },
   "scripts": {
     "postinstall": "polymer install --variants",
-    "serve": "polymer serve",
-    "test": "npm run test:lint && npm run test:wct",
-    "test:lint": "npm run test:lint:wc && npm run test:lint:html",
-    "test:lint:html": "eslint *.html",
-    "test:lint:wc": "polymer lint",
-    "test:local": "npm run test:lint && npm run test:wct:local",
-    "test:wct": "polymer test --verbose",
-    "test:wct:local": "cross-env LAUNCHPAD_BROWSERS=chrome polymer test --skip-plugin sauce --verbose"
+    "lint": "npm run lint:wc && npm run lint:html",
+    "lint:html": "eslint *.html demo/*.html test/*.html",
+    "lint:wc": "polymer lint",
+    "test:polymer:local": "polymer test --skip-plugin sauce",
+    "test:polymer:sauce": "polymer test --skip-plugin local",
+    "test": "npm run lint && npm run test:polymer:local"
   },
   "repository": {
     "type": "git",
@@ -30,12 +28,11 @@
   "author": "D2L Corporation",
   "license": "Apache-2.0",
   "devDependencies": {
-    "cross-env": "^5.1.6",
     "eslint": "^5.9.0",
     "eslint-config-brightspace": "^0.4.1",
     "eslint-plugin-html": "^5.0.0",
     "frau-ci": "^1.33.2",
-    "polymer-cli": "^1.6.0",
+    "polymer-cli": "^1.9.1",
     "web-component-tester-istanbul": "^0.10.0"
   }
 }

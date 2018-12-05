@@ -12,41 +12,35 @@
   },
   "homepage": "https://github.com/Brightspace/save-status",
   "name": "d2l-save-status",
-  "version": "3.5.0",
+  "version": "1.6.0",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "serve": "polymer serve --npm",
-    "test": "npm run test:lint && npm run test:wct",
-    "test:lint": "npm run test:lint:wc && npm run test:lint:js",
-    "test:lint:js": "eslint . --ext .js,.html test/**/*.js test/**/*.html demo/**/*.js demo/**/*.html",
-    "test:lint:wc": "polymer lint",
-    "test:local": "npm run test:lint && npm run test:wct:local",
-    "test:wct": "polymer test --verbose",
-    "test:wct:local": "cross-env LAUNCHPAD_BROWSERS=chrome polymer test --skip-plugin sauce --verbose",
-    "analyze": "cross-env NODE_OPTIONS='--max_old_space_size=8192' polymer analyze > analysis.json"
+    "lint": "npm run lint:wc && npm run lint:js",
+    "lint:js": "eslint . --ext .js,.html test/**/*.js test/**/*.html demo/**/*.js demo/**/*.html",
+    "lint:wc": "polymer lint",
+    "test:polymer:local": "polymer test --skip-plugin sauce",
+    "test:polymer:sauce": "polymer test --skip-plugin local",
+    "test": "npm run lint && npm run test:polymer:local"
   },
   "author": "D2L Corporation",
   "license": "Apache-2.0",
   "devDependencies": {
     "@babel/polyfill": "^7.0.0",
-    "@polymer/iron-component-page": "^4.0.1",
-    "@polymer/iron-demo-helpers": "^3.0.2",
-    "@polymer/iron-test-helpers": "^3.0.1",
-    "@webcomponents/webcomponentsjs": "^2.1.3",
+    "@polymer/iron-component-page": "^3.0.0-pre.18",
+    "@polymer/iron-demo-helpers": "^3.0.0-pre.18",
+    "@polymer/iron-test-helpers": "^3.0.0-pre.18",
+    "@webcomponents/webcomponentsjs": "^2.2.1",
     "babel-eslint": "^10.0.1",
-    "cross-env": "^5.1.6",
-    "eslint": "^4.19.1",
-    "eslint-config-brightspace": "^0.4.0",
-    "eslint-plugin-html": "^4.0.3",
+    "eslint": "^5.9.0",
+    "eslint-config-brightspace": "^0.4.1",
+    "eslint-plugin-html": "^5.0.0",
     "frau-ci": "^1.33.2",
-    "polymer-cli": "^1.9.0",
+    "polymer-cli": "^1.9.1",
     "wct-browser-legacy": "^1.0.1",
     "web-component-tester-istanbul": "^0.10.0",
-    "whatwg-fetch": "^2.0.0",
-    "axe-core": "^3.0.0",
-    "pwa-helpers": "^0.9.0"
+    "whatwg-fetch": "^2.0.0"
   },
   "resolutions": {
     "inherits": "2.0.3",
@@ -56,10 +50,10 @@
   },
   "main": "d2l-save-status.js",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0",
-    "d2l-colors": "BrightspaceUI/colors#semver:^4.0.0",
-    "d2l-icons": "BrightspaceUI/icons#semver:^6.0.0",
-    "d2l-localize-behavior": "BrightspaceUI/localize-behavior#semver:^2.0.0",
-    "d2l-typography": "BrightspaceUI/typography#semver:^7.0.0"
+    "d2l-colors": "BrightspaceUI/colors#semver:^4.0.1",
+    "d2l-icons": "BrightspaceUI/icons#semver:^6.0.1",
+    "d2l-localize-behavior": "BrightspaceUI/localize-behavior#semver:^2.0.1",
+    "d2l-typography": "BrightspaceUI/typography#semver:^7.0.2",
+    "@polymer/polymer": "^3.0.0"
   }
 }

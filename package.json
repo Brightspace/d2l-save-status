@@ -18,7 +18,7 @@
   },
   "scripts": {
     "lint": "npm run lint:wc && npm run lint:js",
-    "lint:js": "eslint . --ext .js,.html test/**/*.js test/**/*.html demo/**/*.js demo/**/*.html",
+    "lint:js": "eslint . --ext .js,.html test/**/*.js test/**/*.html demo/**/*.html",
     "lint:wc": "polymer lint",
     "test:polymer:local": "polymer test --skip-plugin sauce",
     "test:polymer:sauce": "polymer test --skip-plugin local",
@@ -32,12 +32,14 @@
     "@polymer/iron-demo-helpers": "^3.0.0-pre.18",
     "@polymer/iron-test-helpers": "^3.0.0-pre.18",
     "@webcomponents/webcomponentsjs": "^2.2.1",
+    "axe-core": "^3.1.2",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.9.0",
     "eslint-config-brightspace": "^0.4.1",
     "eslint-plugin-html": "^5.0.0",
     "frau-ci": "^1.33.2",
     "polymer-cli": "^1.9.1",
+    "pwa-helpers": "^0.9.0",
     "wct-browser-legacy": "^1.0.1",
     "web-component-tester-istanbul": "^0.10.0",
     "whatwg-fetch": "^2.0.0"

@@ -23,10 +23,11 @@
 	<script src="./d2l-save-status.js"></script>
 
 	<script type="module">
-import '../d2l-save-status.js';
-import { a11ySuite } from 'wct-browser-legacy/a11ySuite.js';
-a11ySuite('basic');
-</script>
+		import '../d2l-save-status.js';
+		import 'axe-core/axe.min.js';
+		import {axeReport} from 'pwa-helpers/axe-report.js';
+		axeReport(fixture('basic'));
+	</script>
 </body>
 
 </html>

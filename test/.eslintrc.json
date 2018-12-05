@@ -1,0 +1,8 @@
+{
+  "extends": "brightspace/wct-polymer-3-config",
+  "globals": {
+    "attest": true,
+    "isAttestInstalled": true,
+    "ally_tests": true
+  }
+}

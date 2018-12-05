@@ -1,10 +1,22 @@
-import '../@polymer/polymer/polymer-legacy.js';
-import '../d2l-typography/d2l-typography-shared-styles.js';
-import '../d2l-icons/d2l-icon.js';
-import '../d2l-icons/tier1-icons.js';
-import '../d2l-colors/d2l-colors.js';
+/**
+`d2l-save-status`
+component to display saving statuses
+
+@demo demo/d2l-save-status-demo.html
+*/
+/*
+  FIXME(polymer-modulizer): the above comments were extracted
+  from HTML and may be out of place here. Review them and
+  then delete this comment!
+*/
+import '@polymer/polymer/polymer-legacy.js';
+
+import 'd2l-typography/d2l-typography-shared-styles.js';
+import 'd2l-icons/d2l-icon.js';
+import 'd2l-icons/tier1-icons.js';
+import 'd2l-colors/d2l-colors.js';
 import './localize-behavior.js';
-import { Polymer } from '../@polymer/polymer/lib/legacy/polymer-fn.js';
+import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
 const $_documentContainer = document.createElement('template');
 
 $_documentContainer.innerHTML = `<dom-module id="d2l-save-status">
@@ -46,15 +58,14 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-save-status">
 			<label class="status-text">[[localize('saved')]]</label>
 		</div>
 	</template>
-
+	
 </dom-module>`;
 
 document.head.appendChild($_documentContainer.content);
 var debounce = function(func, delay) {
 	var timeout;
 	return function() {
-		// eslint-disable-next-line no-invalid-this
-		var context = this;
+		var context = this; // eslint-disable-line no-invalid-this
 		var args = arguments;
 		clearTimeout(timeout);
 		timeout = setTimeout(function() { func.apply(context, args); }, delay);
@@ -62,12 +73,6 @@ var debounce = function(func, delay) {
 };
 var delayMS = 3000;
 
-/**
-`d2l-save-status`
-component to display saving statuses
-
-@demo demo/d2l-save-status-demo.html
-*/
 Polymer({
 	is: 'd2l-save-status',
 	behaviors: [

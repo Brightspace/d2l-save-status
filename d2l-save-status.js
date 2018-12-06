@@ -49,7 +49,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-save-status">
 			}
 		</style>
 		<div hidden="" aria-live="polite" id="save-status-announce"></div>
-		<div id="saving-status-indicator" hidden="">
+		<div id="saving-status-indicator" style="visibility: hidden">
 			<d2l-icon class="check-icon"></d2l-icon>
 			<label class="status-text">[[localize('saving')]]</label>
 		</div>
@@ -99,6 +99,7 @@ Polymer({
 	},
 
 	_toggleVisible: function(show, hidden) {
+		this.$[show].hidden = "visible";
 		this.$[show].hidden = false;
 		this.$[hidden].hidden = true;
 	},

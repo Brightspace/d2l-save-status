@@ -142,7 +142,7 @@ Polymer({
 	_computeStatusText: function(_saveStatus) {
 		var computedStatusText = (_saveStatus === 'none') ? ' ' : this.localize(_saveStatus);
 		return computedStatusText;
-		},
+	},
 
 	/**
 	  * Save Starting

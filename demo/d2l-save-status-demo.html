@@ -7,14 +7,22 @@
 
 	<title>d2l-save-status demo</title>
 
-	<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+	<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
 
-	<script type="module" src="/components/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
-	<script type="module" src="/components/@polymer/iron-demo-helpers/demo-snippet.js"></script>
-	<script type="module" src="/components/d2l-typography/d2l-typography.js"></script>
+	<script type="module" src="../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+	<script type="module" src="../../@polymer/iron-demo-helpers/demo-snippet.js"></script>
+	<script type="module" src="../../d2l-typography/d2l-typography.js"></script>
 	<script type="module" src="../d2l-save-status.js"></script>
 
+	<!-- FIXME(polymer-modulizer):
+		These imperative modules that innerHTML your HTML are
+		a hacky way to be sure that any mixins in included style
+		modules are ready before any elements that reference them are
+		instantiated, otherwise the CSS @apply mixin polyfill won't be
+		able to expand the underlying CSS custom properties.
+		See: https://github.com/Polymer/polymer-modulizer/issues/154
+		-->
 	<script type="module">
 const $_documentContainer = document.createElement('template');
 $_documentContainer.innerHTML = '<style is="custom-style" include="demo-pages-shared-styles"></style>';
@@ -62,38 +70,38 @@ document.body.appendChild($_documentContainer.content);
 </script>
 
 	<script type="module">
-import '../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-import '../../@polymer/iron-demo-helpers/demo-snippet.js';
-import '../../d2l-typography/d2l-typography.js';
+import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+import '@polymer/iron-demo-helpers/demo-snippet.js';
+import 'd2l-typography/d2l-typography.js';
 import '../d2l-save-status.js';
-document.querySelector('#save-btn').addEventListener('click', function(e) {
+document.querySelector('#save-btn').addEventListener('click', function() {
 	document.querySelector('#save-status').start();
-	console.log('long response pressed: ' + new Date());
+	console.log('long response pressed: ' + new Date()); // eslint-disable-line no-console
 	setTimeout(function() {
 		document.querySelector('#save-status').end();
-		console.log('save long responed: ' + new Date());
+		console.log('save long responed: ' + new Date()); // eslint-disable-line no-console
 	}, 10000);
 });
-document.querySelector('#save-short-btn').addEventListener('click', function(e) {
+document.querySelector('#save-short-btn').addEventListener('click', function() {
 	document.querySelector('#save-status').start();
-	console.log('short response pressed: ' + new Date());
+	console.log('short response pressed: ' + new Date()); // eslint-disable-line no-console
 
 	setTimeout(function() {
 		document.querySelector('#save-status').end();
-		console.log('save short responed: ' + new Date());
+		console.log('save short responed: ' + new Date()); // eslint-disable-line no-console
 	}, 100);
 });
-document.querySelector('#save-force-end').addEventListener('click', function(e) {
+document.querySelector('#save-force-end').addEventListener('click', function() {
 	document.querySelector('#save-status').forceEnd();
-	console.log('force end pressed: ' + new Date());
+	console.log('force end pressed: ' + new Date()); // eslint-disable-line no-console
 });
-document.querySelector('#save-error-btn').addEventListener('click', function(e) {
+document.querySelector('#save-error-btn').addEventListener('click', function() {
 	document.querySelector('#save-status').start();
-	console.log('save and error response pressed: ' + new Date());
+	console.log('save and error response pressed: ' + new Date()); // eslint-disable-line no-console
 
 	setTimeout(function() {
 		document.querySelector('#save-status').error();
-		console.log('save error responed: ' + new Date());
+		console.log('save error responed: ' + new Date()); // eslint-disable-line no-console
 	}, 100);
 });
 </script>

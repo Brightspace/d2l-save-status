@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 var isAttestInstalled = function() {
 
 	try {
@@ -9,6 +10,7 @@ var isAttestInstalled = function() {
 	return true;
 };
 
+// eslint-disable-next-line no-unused-vars
 var ally_tests = function(my_delay) {
 
 	function delay(t, v) {
@@ -37,6 +39,7 @@ var ally_tests = function(my_delay) {
 				function(err) {
 					var i;
 					for (i = 0; i < my_res.violations.length; i++) {
+						// eslint-disable-next-line no-console
 						console.log(JSON.stringify(my_res.violations[i]));
 					}
 					throw err;

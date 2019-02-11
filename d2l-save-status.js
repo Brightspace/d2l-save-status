@@ -36,7 +36,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-save-status">
 				visibility: hidden;
 			}
 
-			:host .check-icon[save-status="saved"] {
+			:host([_save-status="saved"]) .check-icon {
 				visibility: visible;
 			}
 
@@ -53,10 +53,9 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-save-status">
 				margin-left: 8px;
 			}
 		</style>
-		<div hidden="" aria-live="polite" id="save-status-announce"></div>
 		<div id="save-status-indicator">
-			<d2l-icon icon="d2l-tier1:check" class="check-icon" save-status$={{_saveStatus}}></d2l-icon>
-			<label id="status-text"></label>
+			<d2l-icon icon="d2l-tier1:check" class="check-icon"></d2l-icon>
+			<span aria-live="polite" id="status-text">[[_statusText]]</span>
 		</div>
 	</template>
 	
@@ -119,8 +118,6 @@ Polymer({
 		if (this._error) return;
 
 		this._saveStatus = 'saved';
-		this.$['status-text'].innerText = this._statusText;
-		this.$['save-status-announce'].innerText = this._statusText;
 		this._lastSaving = new Date(0);
 		this._lastSaved = new Date();
 	},
@@ -128,15 +125,11 @@ Polymer({
 	_toggleError: function() {
 		if (this._saving > 0) return;
 		this._saveStatus = 'none';
-		this.$['status-text'].innerText = this._statusText;
-		this.$['save-status-announce'].innerText = '';
 		this._lastSaving = new Date(0);
 	},
 
 	_toggleSaving: function() {
 		this._saveStatus = 'saving';
-		this.$['status-text'].innerText = this._statusText;
-		this.$['save-status-announce'].innerText = this._statusText;
 	},
 
 	_computeStatusText: function(_saveStatus) {

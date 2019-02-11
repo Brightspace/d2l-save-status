@@ -1,10 +1,22 @@
-import '../@polymer/polymer/polymer-legacy.js';
-import '../d2l-typography/d2l-typography-shared-styles.js';
-import '../d2l-icons/d2l-icon.js';
-import '../d2l-icons/tier1-icons.js';
-import '../d2l-colors/d2l-colors.js';
+/**
+`d2l-save-status`
+component to display saving statuses
+
+@demo demo/d2l-save-status-demo.html
+*/
+/*
+  FIXME(polymer-modulizer): the above comments were extracted
+  from HTML and may be out of place here. Review them and
+  then delete this comment!
+*/
+import '@polymer/polymer/polymer-legacy.js';
+
+import 'd2l-typography/d2l-typography-shared-styles.js';
+import 'd2l-icons/d2l-icon.js';
+import 'd2l-icons/tier1-icons.js';
+import 'd2l-colors/d2l-colors.js';
 import './localize-behavior.js';
-import { Polymer } from '../@polymer/polymer/lib/legacy/polymer-fn.js';
+import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
 const $_documentContainer = document.createElement('template');
 
 $_documentContainer.innerHTML = `<dom-module id="d2l-save-status">
@@ -21,9 +33,14 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-save-status">
 				margin-right: 8px;
 				padding-bottom: 2px;
 				fill: var(--d2l-color-corundum);
+				visibility: hidden;
 			}
 
-			.status-text {
+			:host .check-icon[save-status="saved"] {
+				visibility: visible;
+			}
+
+			#status-text {
 				@apply --d2l-body-compact-text;
 				font-style: italic;
 			}
@@ -37,24 +54,19 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-save-status">
 			}
 		</style>
 		<div hidden="" aria-live="polite" id="save-status-announce"></div>
-		<div id="saving-status-indicator" style="visibility: hidden;">
-			<d2l-icon class="check-icon"></d2l-icon>
-			<label class="status-text">[[localize('saving')]]</label>
-		</div>
-		<div id="saved-status-indicator" hidden="">
-			<d2l-icon icon="d2l-tier1:check" class="check-icon"></d2l-icon>
-			<label class="status-text">[[localize('saved')]]</label>
+		<div id="save-status-indicator">
+			<d2l-icon icon="d2l-tier1:check" class="check-icon" save-status$={{_saveStatus}}></d2l-icon>
+			<label id="status-text"></label>
 		</div>
 	</template>
-
+	
 </dom-module>`;
 
 document.head.appendChild($_documentContainer.content);
 var debounce = function(func, delay) {
 	var timeout;
 	return function() {
-		// eslint-disable-next-line no-invalid-this
-		var context = this;
+		var context = this; // eslint-disable-line no-invalid-this
 		var args = arguments;
 		clearTimeout(timeout);
 		timeout = setTimeout(function() { func.apply(context, args); }, delay);
@@ -62,12 +74,6 @@ var debounce = function(func, delay) {
 };
 var delayMS = 3000;
 
-/**
-`d2l-save-status`
-component to display saving statuses
-
-@demo demo/d2l-save-status-demo.html
-*/
 Polymer({
 	is: 'd2l-save-status',
 	behaviors: [
@@ -75,7 +81,22 @@ Polymer({
 	],
 
 	properties: {
-
+		/**
+		  * Save status, one of: none, saving or saved
+		 */
+		_saveStatus: {
+			type: String,
+			value: 'none',
+			reflectToAttribute: true
+		},
+		/**
+		  * Computed text based on the save status
+		 */
+		_statusText: {
+			type: String,
+			value: ' ',
+			computed: '_computeStatusText(_saveStatus)'
+		}
 	},
 
 	ready: function() {
@@ -93,33 +114,35 @@ Polymer({
 		}, 100);
 	},
 
-	_toggleVisible: function(show, hidden) {
-		this.$[show].style.visibility = "visible";
-		this.$[show].hidden = false;
-		this.$[hidden].hidden = true;
-	},
-
 	_toggleSaved: function() {
 		if (this._saving > 0) return;
 		if (this._error) return;
 
-		this._toggleVisible('saved-status-indicator', 'saving-status-indicator');
-		this.$['save-status-announce'].innerText = this.localize('saved');
+		this._saveStatus = 'saved';
+		this.$['status-text'].innerText = this._statusText;
+		this.$['save-status-announce'].innerText = this._statusText;
 		this._lastSaving = new Date(0);
 		this._lastSaved = new Date();
 	},
 
 	_toggleError: function() {
 		if (this._saving > 0) return;
-		this.$['saving-status-indicator'].hidden = true;
+		this._saveStatus = 'none';
+		this.$['status-text'].innerText = this._statusText;
 		this.$['save-status-announce'].innerText = '';
 		this._lastSaving = new Date(0);
 	},
 
 	_toggleSaving: function() {
-		this._toggleVisible('saving-status-indicator', 'saved-status-indicator');
-		this.$['save-status-announce'].innerText = this.localize('saving');
+		this._saveStatus = 'saving';
+		this.$['status-text'].innerText = this._statusText;
+		this.$['save-status-announce'].innerText = this._statusText;
 	},
+
+	_computeStatusText: function(_saveStatus) {
+		var computedStatusText = (_saveStatus === 'none') ? ' ' : this.localize(_saveStatus);
+		return computedStatusText;
+		},
 
 	/**
 	  * Save Starting
@@ -130,7 +153,6 @@ Polymer({
 		this._lastSaving = new Date();
 		this._error = false;
 	},
-
 	/**
 	  * Save Ends
 	 */

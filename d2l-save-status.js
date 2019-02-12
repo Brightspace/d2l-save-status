@@ -40,7 +40,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-save-status">
 				visibility: visible;
 			}
 
-			#status-text {
+			.d2l-save-status-text {
 				@apply --d2l-body-compact-text;
 				font-style: italic;
 			}
@@ -53,9 +53,9 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-save-status">
 				margin-left: 8px;
 			}
 		</style>
-		<div id="save-status-indicator">
+		<div>
 			<d2l-icon icon="d2l-tier1:check" class="check-icon"></d2l-icon>
-			<span aria-live="polite" id="status-text">[[_statusText]]</span>
+			<span aria-live="polite" class="d2l-save-status-text">[[_statusText]]</span>
 		</div>
 	</template>
 	

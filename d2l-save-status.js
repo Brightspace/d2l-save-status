@@ -33,9 +33,14 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-save-status">
 				margin-right: 8px;
 				padding-bottom: 2px;
 				fill: var(--d2l-color-corundum);
+				visibility: hidden;
 			}
 
-			.status-text {
+			:host([_save-status="saved"]) .check-icon {
+				visibility: visible;
+			}
+
+			.d2l-save-status-text {
 				@apply --d2l-body-compact-text;
 				font-style: italic;
 			}
@@ -48,14 +53,9 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-save-status">
 				margin-left: 8px;
 			}
 		</style>
-		<div hidden="" aria-live="polite" id="save-status-announce"></div>
-		<div id="saving-status-indicator" hidden="">
-			<d2l-icon class="check-icon"></d2l-icon>
-			<label class="status-text">[[localize('saving')]]</label>
-		</div>
-		<div id="saved-status-indicator" hidden="">
+		<div>
 			<d2l-icon icon="d2l-tier1:check" class="check-icon"></d2l-icon>
-			<label class="status-text">[[localize('saved')]]</label>
+			<span aria-live="polite" class="d2l-save-status-text">[[_statusText]]</span>
 		</div>
 	</template>
 	
@@ -80,7 +80,22 @@ Polymer({
 	],
 
 	properties: {
-
+		/**
+		  * Save status, one of: none, saving or saved
+		 */
+		_saveStatus: {
+			type: String,
+			value: 'none',
+			reflectToAttribute: true
+		},
+		/**
+		  * Computed text based on the save status
+		 */
+		_statusText: {
+			type: String,
+			value: ' ',
+			computed: '_computeStatusText(_saveStatus)'
+		}
 	},
 
 	ready: function() {
@@ -98,31 +113,28 @@ Polymer({
 		}, 100);
 	},
 
-	_toggleVisible: function(show, hidden) {
-		this.$[show].hidden = false;
-		this.$[hidden].hidden = true;
-	},
-
 	_toggleSaved: function() {
 		if (this._saving > 0) return;
 		if (this._error) return;
 
-		this._toggleVisible('saved-status-indicator', 'saving-status-indicator');
-		this.$['save-status-announce'].innerText = this.localize('saved');
+		this._saveStatus = 'saved';
 		this._lastSaving = new Date(0);
 		this._lastSaved = new Date();
 	},
 
 	_toggleError: function() {
 		if (this._saving > 0) return;
-		this.$['saving-status-indicator'].hidden = true;
-		this.$['save-status-announce'].innerText = '';
+		this._saveStatus = 'none';
 		this._lastSaving = new Date(0);
 	},
 
 	_toggleSaving: function() {
-		this._toggleVisible('saving-status-indicator', 'saved-status-indicator');
-		this.$['save-status-announce'].innerText = this.localize('saving');
+		this._saveStatus = 'saving';
+	},
+
+	_computeStatusText: function(_saveStatus) {
+		var computedStatusText = (_saveStatus === 'none') ? ' ' : this.localize(_saveStatus);
+		return computedStatusText;
 	},
 
 	/**
@@ -134,7 +146,6 @@ Polymer({
 		this._lastSaving = new Date();
 		this._error = false;
 	},
-
 	/**
 	  * Save Ends
 	 */
